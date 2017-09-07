@@ -1,0 +1,218 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../web-components/kano-style/kano-style.html">
+
+<!--
+`kwc-product-card`
+A formatted, responsive list of Kano products
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--kwc-product-card-img-height` | Height of the product image | `180px`
+`--kwc-product-card-width` | Width of the element | `240px`
+
+
+@demo demo/index.html
+-->
+
+<dom-module id="kwc-product-card">
+    <template>
+        <style>
+            :host {
+                @apply --layout-flex-auto;
+                @apply --layout-vertical;
+                @apply --layout-stretch;
+                @apply --layout-center;
+                box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+                border-radius: 4px;
+                max-width: var(--kwc-product-card-max-width, 100%);
+                overflow: hidden;
+                position: relative;
+                width: var(--kwc-product-card-width, 240px);
+            }
+            /** Color schemes */
+            :host([color="kano-orange"]) > a {
+                background-color: var(--color-kano-orange);
+            }
+            :host([color="kano-orange"]) iron-image {
+                background-color: var(--color-kano-orange);
+            }
+            :host([color="candlelight"]) > a {
+                background-color: var(--color-candlelight);
+            }
+            :host([color="candlelight"]) iron-image {
+                background-color: var(--color-candlelight);
+            }
+            :host([color="grassland"]) > a {
+                background-color: var(--color-grassland);
+            }
+            :host([color="grassland"]) iron-image {
+                background-color: var(--color-grassland);
+            }
+            :host([color="sky"]) > a {
+                background-color: var(--color-sky);
+            }
+            :host([color="sky"]) iron-image {
+                background-color: var(--color-sky);
+            }
+            :host([color="carnation"]) > a {
+                background-color: var(--color-carnation);
+            }
+            :host([color="carnation"]) iron-image {
+                background-color: var(--color-carnation);
+            }
+            :host > a {
+                width: 100%;
+            }
+            :host .age {
+                color: var(--color-white);
+                background-color: rgba(41, 47, 53, 0.5);
+                border-radius: 3px;
+                font-weight: bold;
+                padding: 4px 6px;
+                pointer-events: none;
+                position: absolute;
+                top: 24px;
+                left: 24px;
+            }
+            :host iron-image {
+                height: var(--kwc-product-card-img-height, 180px);
+                width: 100%;
+            }
+            :host .main {
+                @apply --layout-flex-auto;
+                @apply --layout-vertical;
+                @apply --layout-start;
+                background-color: white;
+                box-sizing: border-box;
+                padding: 16px 24px 24px 24px;
+                width: 100%;
+            }
+            :host .main h2 {
+                color: var(--color-black);
+                font-family: var(--font-heading);
+                font-size: 18px;
+                font-weight: bold;
+                margin: 0;
+            }
+            :host .main p,
+            :host .main ul {
+                color: var(--color-grey);
+                font-family: var(--font-body);
+                font-size: 16px;
+                font-weight: normal;
+            }
+            :host .main p {
+                margin: 8px 0 0 0;
+            }
+            :host .main ul {
+                margin: 8px 0 0 0;
+                padding: 0 0 0 18px;
+            }
+            :host .action {
+                @apply --layout-flex-auto;
+                @apply --layout-horizontal;
+                @apply --layout-end;
+            }
+            :host .action a {
+                color: var(--color-black);
+                font-family: var(--font-body);
+                font-size: 14px;
+                font-weight: bold;
+                margin-top: 32px;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        </style>
+        <a href$="[[linkHref]]" title="Learn more">
+            <iron-image src$="[[imgSrc]]"
+                        fade
+                        preload
+                        sizing="contain">
+                        </iron-image>
+        </a>
+        <div class="age">[[ageRange]]</div>
+        <div class="main">
+            <h2>[[title]]</h2>
+            <dom-if>
+                <template is="dom-if" if="[[description]]">
+                    <p>[[description]]</p>
+                </template>
+            </dom-if>
+            <dom-if>
+                <template is="dom-if" if="[[features]]">
+                    <ul>
+                        <dom-repeat>
+                            <template is="dom-repeat" items="[[features]]">
+                                <li>[[item]]</li>
+                            </template>
+                        </dom-repeat>
+                    </ul>
+                </template>
+            </dom-if>
+            <!-- Wrapper div around the link to allow for correct vertical
+                 placement with flexbox (aligning to the bottom of the
+                 card irrespective of the height of other content)-->
+            <div class="action">
+                <a href$="[[linkHref]]" title="Learn more">Learn more</a>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'kwc-product-card',
+            properties: {
+                /** The age-range text, eg. `Ages 6+` */
+                ageRange: {
+                    type: String,
+                    value: null
+                },
+                /**
+                 * The color of the image background. Possible values:
+                 * - kano-orange
+                 * - candlelight
+                 * - grassland
+                 * - sky
+                 * - flamingo
+                 */
+                color: {
+                    type: String,
+                    value: 'kano-orange',
+                    reflectToAttribute: true
+                },
+                /** Product description */
+                description: {
+                    type: String,
+                    value: null
+                },
+                /**
+                 * An Array of product features to be displayed
+                 * as bullet points
+                 */
+                features: {
+                    type: Array,
+                    value: function () {
+                        return [];
+                    }
+                },
+                /** Source of the product image */
+                imgSrc: {
+                    type: String,
+                    value: null
+                },
+                /** URI to link through to for the full product details */
+                linkHref: {
+                    type: String,
+                    value: null
+                },
+                /** Product title */
+                title: {
+                    type: String,
+                    value: null
+                }
+            }
+        });
+    </script>
+</dom-module>

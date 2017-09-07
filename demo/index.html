@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+        <title>kwc-product-card demo</title>
+
+        <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+        <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+        <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+        <link rel="import" href="../kwc-product-card.html">
+
+        <custom-style>
+          <style is="custom-style" include="demo-pages-shared-styles">
+              kwc-product-card {
+                  margin: auto;
+              }
+          </style>
+        </custom-style>
+    </head>
+    <body>
+        <div class="vertical-section-container centered">
+            <h3>Default (Kano Orange, with features and description)</h3>
+            <demo-snippet>
+                <template is="dom-bind" id="features">
+                    <kwc-product-card title="Computer Kit"
+                                      description="A computer that anyone can make and learn to code with"
+                                      features="[[features]]"
+                                      link-href="/store/uk/computer-kit"
+                                      img-src="https://static.kano.me/assets/images/product-page/kano-complete/product/kano-complete.png"
+                                      age-range="Ages 6+">
+                                      </kwc-product-card>
+                </template>
+            </demo-snippet>
+        </div>
+        <div class="vertical-section-container centered">
+            <h3>Yellow (Features only)</h3>
+            <demo-snippet>
+                <template is="dom-bind" id="featuresOnly">
+                    <kwc-product-card title="Computer Kit"
+                                      features="[[features]]"
+                                      link-href="/store/uk/computer-kit"
+                                      img-src="https://static.kano.me/assets/images/product-page/kano-complete/product/kano-complete.png"
+                                      age-range="Ages 6+"
+                                      color="candlelight">
+                                      </kwc-product-card>
+                </template>
+            </demo-snippet>
+        </div>
+        <div class="vertical-section-container centered">
+            <h3>Green (No features or description)</h3>
+            <demo-snippet>
+                <template>
+                    <kwc-product-card title="Computer Kit"
+                                      link-href="/store/uk/computer-kit"
+                                      img-src="https://static.kano.me/assets/images/product-page/kano-complete/product/kano-complete.png"
+                                      age-range="Ages 6+"
+                                      color="grassland">
+                                      </kwc-product-card>
+                </template>
+            </demo-snippet>
+        </div>
+        <div class="vertical-section-container centered">
+            <h3>Blue</h3>
+            <demo-snippet>
+                <template>
+                    <kwc-product-card title="Computer Kit"
+                                      description="A computer that anyone can make and learn to code with"
+                                      link-href="/store/uk/computer-kit"
+                                      img-src="https://static.kano.me/assets/images/product-page/kano-complete/product/kano-complete.png"
+                                      age-range="Ages 6+"
+                                      color="sky">
+                                      </kwc-product-card>
+                </template>
+            </demo-snippet>
+        </div>
+        <div class="vertical-section-container centered">
+            <h3>Red</h3>
+            <demo-snippet>
+                <template>
+                    <kwc-product-card title="Computer Kit"
+                                      description="A computer that anyone can make and learn to code with"
+                                      link-href="/store/uk/computer-kit"
+                                      img-src="https://static.kano.me/assets/images/product-page/kano-complete/product/kano-complete.png"
+                                      age-range="Ages 6+"
+                                      color="carnation">
+                                      </kwc-product-card>
+                </template>
+            </demo-snippet>
+        </div>
+        <script>
+              var featureArray = [
+                  'The ultimate creative computer',
+                  'Computer Kit + Screen Kit',
+                  '100s of coding challenges',
+                  'Learn how screens work'
+              ];
+              document.addEventListener('WebComponentsReady', () => {
+                  features.features = featureArray;
+                  featuresOnly.features = featureArray;
+              });
+        </script>
+    </body>
+</html>

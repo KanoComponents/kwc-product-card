@@ -1,21 +1,20 @@
 # \<kwc-product-card\>
 
-A formatted, responsive list of Kano products
+A product thumbnail display
 
  - What is it called?
      - kwc-product-card
  - What is it made out of?
-     - Describe here the contents of this component
+     - `iron-image`
  - What variants are needed?
-     - Variant 1:
-     - Variant 2:
-     - Variant 3:
+     - Color variants
+     - With/without description
+     - With/without features
  - How does it scale?
-     - Desktop: ...
-     - Mobile: ...
+     - Single column of elements that scales with screen size up to max-width
  - What style variables are in use?
-     - Style 1: ...
-     - Style 2: ...
+     - `--kwc-product-card-img-height` to modify the image height
+     - `--kwc-product-card-width` to constrain the width of the element
 
 ## Installation
 Clone this repository.
