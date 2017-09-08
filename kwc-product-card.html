@@ -69,6 +69,7 @@ Custom property | Description | Default
                 color: var(--color-white);
                 background-color: rgba(41, 47, 53, 0.5);
                 border-radius: 3px;
+                font-family: var(--font-body);
                 font-weight: bold;
                 padding: 4px 6px;
                 pointer-events: none;
@@ -135,22 +136,18 @@ Custom property | Description | Default
         <div class="age">[[ageRange]]</div>
         <div class="main">
             <h2>[[title]]</h2>
-            <dom-if>
-                <template is="dom-if" if="[[description]]">
-                    <p>[[description]]</p>
-                </template>
-            </dom-if>
-            <dom-if>
-                <template is="dom-if" if="[[features]]">
-                    <ul>
-                        <dom-repeat>
-                            <template is="dom-repeat" items="[[features]]">
-                                <li>[[item]]</li>
-                            </template>
-                        </dom-repeat>
-                    </ul>
-                </template>
-            </dom-if>
+            <template is="dom-if" if="[[description]]">
+                <p>[[description]]</p>
+            </template>
+            <template is="dom-if" if="[[features]]">
+                <ul>
+                    <dom-repeat>
+                        <template is="dom-repeat" items="[[features]]">
+                            <li>[[item]]</li>
+                        </template>
+                    </dom-repeat>
+                </ul>
+            </template>
             <!-- Wrapper div around the link to allow for correct vertical
                  placement with flexbox (aligning to the bottom of the
                  card irrespective of the height of other content)-->
