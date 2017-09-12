@@ -139,7 +139,7 @@ Custom property | Description | Default
             <template is="dom-if" if="[[description]]">
                 <p>[[description]]</p>
             </template>
-            <template is="dom-if" if="[[features]]">
+            <template is="dom-if" if="[[_hasFeatures]]">
                 <ul>
                     <dom-repeat>
                         <template is="dom-repeat" items="[[features]]">
@@ -194,6 +194,11 @@ Custom property | Description | Default
                         return [];
                     }
                 },
+                /** Boolean representation of whether the card has features */
+                _hasFeatures: {
+                    type: Boolean,
+                    computed: '_computeHasFeatures(features)'
+                },
                 /** Source of the product image */
                 imgSrc: {
                     type: String,
@@ -209,6 +214,9 @@ Custom property | Description | Default
                     type: String,
                     value: null
                 }
+            },
+            _computeHasFeatures (features) {
+                return features && features.length ? true : false;
             }
         });
     </script>

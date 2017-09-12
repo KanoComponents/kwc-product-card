@@ -65,6 +65,7 @@
                 test('the features should be an empty array by default', function () {
                     assert.isArray(basic.features);
                     assert.lengthOf(basic.features, 0);
+                    assert.equal(basic._hasFeatures, false);
                 });
 
                 test('no features should be rendered when none are provided', function () {
@@ -94,6 +95,7 @@
                 });
 
                 test('it should have the correct features', function (done) {
+                    assert.equal(populated._hasFeatures, true);
                     flush(function () {
                         var listItems =  Polymer.dom(populated.root).querySelectorAll('li');
                         assert.lengthOf(listItems, features.length);
