@@ -58,6 +58,7 @@
                 });
 
                 test('no description should be rendered when none is provided', function () {
+                    assert.equal(basic._hasDescription, false);
                     var description =  Polymer.dom(basic.root).querySelector('p');
                     assert.equal(description, null);
                 });

@@ -136,7 +136,7 @@ Custom property | Description | Default
         <div class="age">[[ageRange]]</div>
         <div class="main">
             <h2>[[title]]</h2>
-            <template is="dom-if" if="[[description]]">
+            <template is="dom-if" if="[[_hasDescription]]">
                 <p>[[description]]</p>
             </template>
             <template is="dom-if" if="[[_hasFeatures]]">
@@ -194,6 +194,14 @@ Custom property | Description | Default
                         return [];
                     }
                 },
+                /**
+                 * Boolean representation of whether the card has a
+                 * description
+                 */
+                _hasDescription: {
+                    type: Boolean,
+                    computed: '_computeHasDescription(description)'
+                },
                 /** Boolean representation of whether the card has features */
                 _hasFeatures: {
                     type: Boolean,
@@ -214,6 +222,9 @@ Custom property | Description | Default
                     type: String,
                     value: null
                 }
+            },
+            _computeHasDescription (description) {
+                return description ? true : false;
             },
             _computeHasFeatures (features) {
                 return features && features.length ? true : false;
