@@ -25,11 +25,12 @@ Custom property | Description | Default
                 @apply --layout-stretch;
                 @apply --layout-center;
                 box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+                box-sizing: border-box;
                 border-radius: 4px;
                 max-width: var(--kwc-product-card-max-width, 100%);
                 overflow: hidden;
                 position: relative;
-                width: var(--kwc-product-card-width, 240px);
+                width: var(--kwc-product-card-width, 324px);
             }
             /** Color schemes */
             :host([color="kano-orange"]) > a {
@@ -63,6 +64,8 @@ Custom property | Description | Default
                 background-color: var(--color-carnation);
             }
             :host > a {
+                font-size: 0;
+                line-height: 0;
                 width: 100%;
             }
             :host .age {
@@ -70,10 +73,13 @@ Custom property | Description | Default
                 background-color: rgba(41, 47, 53, 0.5);
                 border-radius: 3px;
                 font-family: var(--font-body);
+                font-size: 14px;
                 font-weight: bold;
+                line-height: 12px;
                 padding: 4px 6px;
                 pointer-events: none;
                 position: absolute;
+                text-transform: uppercase;
                 top: 24px;
                 left: 24px;
             }
@@ -87,7 +93,7 @@ Custom property | Description | Default
                 @apply --layout-start;
                 background-color: white;
                 box-sizing: border-box;
-                padding: 16px 24px 24px 24px;
+                padding: 24px 24px 36px 24px;
                 width: 100%;
             }
             :host .main h2 {
@@ -119,9 +125,9 @@ Custom property | Description | Default
             :host .action a {
                 color: var(--color-black);
                 font-family: var(--font-body);
-                font-size: 14px;
+                font-size: 12px;
                 font-weight: bold;
-                margin-top: 32px;
+                margin-top: 36px;
                 text-decoration: none;
                 text-transform: uppercase;
             }
