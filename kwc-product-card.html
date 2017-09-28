@@ -141,11 +141,9 @@ Custom property | Description | Default
             </template>
             <template is="dom-if" if="[[_hasFeatures]]">
                 <ul>
-                    <dom-repeat>
-                        <template is="dom-repeat" items="[[features]]">
-                            <li>[[item]]</li>
-                        </template>
-                    </dom-repeat>
+                    <template is="dom-repeat" items="[[features]]">
+                        <li>[[item]]</li>
+                    </template>
                 </ul>
             </template>
             <!-- Wrapper div around the link to allow for correct vertical
