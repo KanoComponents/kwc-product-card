@@ -132,7 +132,7 @@ Custom property | Description | Default
                 text-transform: uppercase;
             }
         </style>
-        <a href$="[[linkHref]]" title="Learn more">
+        <a href$="[[linkHref]]" target$="[[target]]" title="Learn more">
             <iron-image src$="[[imgSrc]]"
                         fade
                         preload
@@ -156,7 +156,7 @@ Custom property | Description | Default
                  placement with flexbox (aligning to the bottom of the
                  card irrespective of the height of other content)-->
             <div class="action">
-                <a href$="[[linkHref]]" title="Learn more">Learn more</a>
+                <a href$="[[linkHref]]" target$="[[target]]" title="Learn more">Learn more</a>
             </div>
         </div>
     </template>
@@ -220,6 +220,11 @@ Custom property | Description | Default
                 linkHref: {
                     type: String,
                     value: null
+                },
+                /** Link target, defaults to `_blank` */
+                target: {
+                    type: String,
+                    value: '_blank'
                 },
                 /** Product title */
                 title: {

@@ -21,6 +21,7 @@
         <test-fixture id="populated">
             <template>
                 <kwc-product-card title="Computer Kit"
+                                  target="_self"
                                   description="A computer that anyone can make and learn to code with"
                                   link-href="/store/uk/computer-kit"
                                   img-src="https://static.kano.me/assets/images/product-page/kano-complete/product/kano-complete.png"
@@ -78,6 +79,14 @@
                     assert.equal(basic.color, 'kano-orange');
                 });
 
+                test('the link-href should be null by default', function() {
+                    assert.equal(basic.linkHref, null);
+                });
+
+                test('the target should be "_blank" by default', function() {
+                    assert.equal(basic.target, '_blank');
+                });
+
                 test('it should have the correct title', function () {
                     var titleText = 'Computer Kit',
                         title =  Polymer.dom(populated.root).querySelector('h2');
@@ -109,6 +118,12 @@
                         link =  Polymer.dom(populated.root).querySelector('a');
                     assert.equal(populated.linkHref, href);
                     assert.equal(link.href, window.location.origin + href);
+                });
+
+                test('it should have the correct target', function () {
+                    var link =  Polymer.dom(populated.root).querySelector('a');
+                    assert.equal(populated.target, '_self');
+                    assert.equal(link.target, '_self');
                 });
 
                 test('it should have the correct image', function () {
