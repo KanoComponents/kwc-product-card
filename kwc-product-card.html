@@ -150,9 +150,7 @@ Custom property | Description | Default
                 sizing="contain">
             </iron-image>
         </a>
-        <template is="dom-if" if="[[_hasAgeRange]]">
-            <div class="age">[[ageRange]]</div>
-        </template>
+        <div class="age" hidden$="[[!_hasAgeRange]]">[[ageRange]]</div>
         <div class="main">
             <h2>
                 <a href$="[[linkHref]]" target$="[[target]]" title="Learn more">
