@@ -90,8 +90,8 @@
                 test('it should have the correct title', function () {
                     var titleText = 'Computer Kit',
                         title =  Polymer.dom(populated.root).querySelector('h2');
-                    assert.equal(populated.title, titleText);
-                    assert.equal(title.textContent, titleText);
+                    assert.equal(populated.title.trim(), titleText);
+                    assert.equal(title.textContent.trim(), titleText);
                 });
 
                 test('it should have the correct description', function (done) {
